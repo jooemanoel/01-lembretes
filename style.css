@@ -1,12 +1,12 @@
-:root{
+:root {
     --backColor: #1A3636;
     --fontColor: #D6BD98;
     --altColor: #40534C;
     --hoverColor: #677D6A;
-    --bordaRaio:0.5rem;
+    --bordaRaio: 0.5rem;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -14,7 +14,7 @@
     text-align: center;
 }
 
-body{
+body {
     background-color: var(--backColor);
     color: var(--fontColor);
     font-size: 1rem;
@@ -24,7 +24,7 @@ body{
     justify-content: center;
 }
 
-.cabecalho{
+.cabecalho {
     position: static;
     height: 14vh;
     width: 99vw;
@@ -36,7 +36,7 @@ body{
     justify-content: space-between;
 }
 
-.cabecalho__titulo{
+.cabecalho__titulo {
     width: 100%;
     height: 65%;
     border-radius: var(--bordaRaio);
@@ -46,7 +46,7 @@ body{
     justify-content: center;
 }
 
-.cabecalho__menu{
+.cabecalho__menu {
     width: 100%;
     height: 33%;
     display: flex;
@@ -54,7 +54,7 @@ body{
     justify-content: space-between;
 }
 
-.cabecalho__menu__item{
+.cabecalho__menu__item {
     width: 33%;
     height: 96%;
     border-radius: var(--bordaRaio);
@@ -63,14 +63,14 @@ body{
     align-items: center;
     justify-content: center;
     color: var(--fontColor);
-    text-decoration: none;
+    cursor: pointer;
 }
 
-.cabecalho__menu__item:hover{
+.cabecalho__menu__item:hover {
     background-color: var(--hoverColor);
 }
 
-.principal{
+.principal {
     width: 99vw;
     height: 80vh;
     margin: 0 0.5vw;
@@ -79,19 +79,19 @@ body{
     justify-content: space-between;
 }
 
-.principal__conteudo{
+.principal__conteudo {
     width: 49.75%;
     height: 100%;
     border-radius: var(--bordaRaio);
     background-color: var(--altColor);
 }
 
-.principal__conteudo__texto{
+.principal__conteudo__texto {
     padding: 0.5rem 1rem;
     text-align: justify;
 }
 
-.principal__conteudo__botao{
+.principal__conteudo__botao {
     width: 100%;
     padding: 1rem;
     border-radius: var(--bordaRaio);
@@ -102,21 +102,22 @@ body{
     text-decoration: none;
 }
 
-.principal__conteudo__botao:hover{
+.principal__conteudo__botao:hover {
     background-color: var(--hoverColor);
 }
-.principal__conteudo__foto{
+
+.principal__conteudo__foto {
     width: 100%;
     height: 100%;
     border-radius: var(--bordaRaio);
     object-fit: cover;
 }
 
-.rodape{
+.rodape {
     height: 4vh;
     width: 99vw;
     margin: 0.5vh 0.5vw;
-    border-radius: var(--bordaRaio);    
+    border-radius: var(--bordaRaio);
     background-color: var(--altColor);
     display: flex;
     align-items: center;
@@ -124,28 +125,44 @@ body{
 }
 
 @media (max-width: 800px) {
-    .cabecalho, .principal, .rodape{
+
+    .cabecalho,
+    .principal,
+    .rodape {
         width: 98vw;
     }
-    .cabecalho, .cabecalho__titulo, .cabecalho__menu, .cabecalho__menu__item, .principal, .principal__conteudo, .principal__conteudo__foto, .rodape{
+
+    .cabecalho,
+    .cabecalho__titulo,
+    .cabecalho__menu,
+    .cabecalho__menu__item,
+    .principal,
+    .principal__conteudo,
+    .principal__conteudo__foto,
+    .rodape {
         height: auto;
     }
-    .cabecalho__menu{
+
+    .cabecalho__menu {
         margin: 0.5vh 0;
         flex-direction: column;
     }
-    .cabecalho__menu__item{
+
+    .cabecalho__menu__item {
         margin: 0.5vh 0;
         padding: 0.5vh 0;
         width: 100%;
     }
-    .principal{
+
+    .principal {
         flex-direction: column-reverse;
     }
-    .principal__conteudo{
+
+    .principal__conteudo {
         width: 100%;
     }
-    .rodape{
+
+    .rodape {
         padding: 0.5vh 0;
     }
 }
