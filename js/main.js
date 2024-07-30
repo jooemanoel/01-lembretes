@@ -1,19 +1,15 @@
-import { Componente } from "./Componente.js";
+import { Comp as Comp } from "./Comp.js";
 
 const elementoBotoes = document.querySelectorAll('.cabecalho__menu__item');
 let botaoAtivo = elementoBotoes[0];
 
-const titulo = new Componente('h1', document.querySelector('.cabecalho__titulo'), true);
+const titulo = new Comp('h1', document.querySelector('.cabecalho__titulo'), true);
 
-const secao = new Componente('section', document.querySelector('.principal'), true);
+const secao = new Comp('section', document.querySelector('.principal'), true);
 secao.elemento.classList.add('principal__conteudo');
 
 for (let i = 0; i < elementoBotoes.length; i++) {
     elementoBotoes[i].addEventListener('click', function () {
-
-        // const secao = new Componente('section', document.querySelector('.principal'), true);
-        // secao.elemento.classList.add('principal__conteudo');
-
         botaoAtivo.classList.remove('ativo');
         botaoAtivo = elementoBotoes[i];
         elementoBotoes[i].classList.add('ativo');

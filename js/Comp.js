@@ -1,4 +1,4 @@
-export class Componente {
+export class Comp {
     constructor(tag, elementoPai, ativo) {
         this.elemento = document.createElement(tag);
         this.elementoPai = elementoPai;
