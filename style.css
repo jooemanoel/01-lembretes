@@ -162,10 +162,11 @@ body {
     }
 
     .principal {
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
 
     .principal__conteudo {
+        margin: 0.5vh 0;
         width: 100%;
     }
 

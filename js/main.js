@@ -4,6 +4,7 @@ const elementoBotoes = document.querySelectorAll('.cabecalho__menu__item');
 let botaoAtivo = elementoBotoes[0];
 
 const titulo = new Componente('h1', document.querySelector('.cabecalho__titulo'), true);
+
 const secao = new Componente('section', document.querySelector('.principal'), true);
 secao.elemento.classList.add('principal__conteudo');
 
