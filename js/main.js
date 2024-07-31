@@ -29,7 +29,7 @@ const textoshtml = [
     },
     {
         titulo: `Projetos`,
-        secao: `<h1 class="principal__conteudo__botao"><a class="principal__conteudo__botao" href="https://03-tabela.vercel.app/">Tabela de Estoque</a></h1>`
+        secao: `<h1 class="principal__conteudo__botao"><a class="principal__conteudo__botao" href="https://jooemanoel.github.io/03-tabela/">Tabela de Estoque</a></h1>`
     }
 ];
 
