@@ -131,7 +131,31 @@ body {
     justify-content: center;
 }
 
+.cabecalho__titulo {
+    position: relative;
+    overflow: hidden;
+}
+
 .cabecalho__titulo__titulo {
+    display: flex;
+    position: relative;
+    transform: translateX(var(--offset));
+    animation: var(--move-animation);
+    --offset: 20em;
+    --move-animation: move 5s linear infinite;
+}
+
+@keyframes move {
+    0% {
+        transform: translateX(var(--offset));
+    }
+
+    100% {
+        transform: translateX(calc(-1 * var(--offset)));
+    }
+}
+
+/* .cabecalho__titulo__titulo {
     width: 500px;
     position: relative;
     animation-name: dancinha;
@@ -148,7 +172,7 @@ body {
     100% {
         transform: translateX(-100%);
     }
-}
+} */
 
 @media (max-width: 800px) {
 
