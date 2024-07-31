@@ -140,9 +140,8 @@ body {
     display: flex;
     position: relative;
     transform: translateX(var(--offset));
-    animation: var(--move-animation);
+    animation: move 5s linear infinite;
     --offset: 20em;
-    --move-animation: move 5s linear infinite;
 }
 
 @keyframes move {
