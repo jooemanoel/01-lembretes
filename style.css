@@ -131,6 +131,24 @@ body {
     justify-content: center;
 }
 
+.cabecalho__titulo__titulo {
+    position: relative;
+    animation-name: dancinha;
+    animation-duration: 4s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+@keyframes dancinha {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
 @media (max-width: 800px) {
 
     .cabecalho,
