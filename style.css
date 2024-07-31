@@ -132,6 +132,7 @@ body {
 }
 
 .cabecalho__titulo__titulo {
+    width: 500px;
     position: relative;
     animation-name: dancinha;
     animation-duration: 4s;
