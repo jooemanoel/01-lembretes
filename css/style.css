@@ -44,14 +44,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-}
-
-.cabecalho__titulo__titulo {
-    width: 100%;
-    background-color: var(--altColor);
     animation-name: rolagem;
-    animation-duration: 4s;
+    animation-duration: 1s;
     animation-iteration-count: infinite;
 }
 
@@ -63,7 +57,7 @@ body {
     }
 
     50% {
-        background-color: var(--backColor);
+        background-color: black;
         left: 200px;
         top: 200px;
     }
