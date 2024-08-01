@@ -44,6 +44,35 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+}
+
+.cabecalho__titulo__titulo {
+    width: 100%;
+    background-color: var(--altColor);
+    animation-name: rolagem;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes rolagem {
+    0% {
+        background-color: var(--altColor);
+        left: 0px;
+        top: 0px;
+    }
+
+    50% {
+        background-color: var(--backColor);
+        left: 200px;
+        top: 200px;
+    }
+
+    100% {
+        background-color: var(--altColor);
+        left: 0px;
+        top: 0px;
+    }
 }
 
 .cabecalho__menu {
@@ -129,28 +158,24 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.cabecalho__titulo {
-    position: relative;
     overflow: hidden;
 }
 
-.cabecalho__titulo__titulo {
-    display: flex;
+.rodape__conteudo {
     position: relative;
-    transform: translateX(var(--offset));
-    animation: move 5s linear infinite;
-    --offset: 20em;
+    width: 60%;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: scroll 10s linear infinite;
 }
 
-@keyframes move {
+@keyframes scroll {
     0% {
-        transform: translateX(var(--offset));
+        transform: translateX(100%);
     }
 
     100% {
-        transform: translateX(calc(-1 * var(--offset)));
+        transform: translateX(-100%);
     }
 }
 
