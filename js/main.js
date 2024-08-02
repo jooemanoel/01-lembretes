@@ -31,6 +31,18 @@ const textoshtml = [
     {
         titulo: `Projetos`,
         secao: `<h1 class="principal__conteudo__botao"><a class="principal__conteudo__botao" href="https://jooemanoel.github.io/03-tabela/">Tabela de Estoque</a></h1>`
+    },
+    {
+        titulo: `Repositórios`,
+        secao:
+            `
+            <h1 class="principal__conteudo__botao"><a class="principal__conteudo__botao" href="https://github.com/jooemanoel?tab=repositories">Página Inicial</a></h1>
+            <h1 class="principal__conteudo__botao"><a class="principal__conteudo__botao" href="https://github.com/jooemanoel/01-inicio">Início</a></h1>
+            <h1 class="principal__conteudo__botao"><a class="principal__conteudo__botao" href="https://github.com/jooemanoel/02-pong">Pong</a></h1>
+            <h1 class="principal__conteudo__botao"><a class="principal__conteudo__botao" href="https://github.com/jooemanoel/03-tabela">Tabela</a></h1>
+            <h1 class="principal__conteudo__botao"><a class="principal__conteudo__botao" href="https://github.com/jooemanoel/04-freeway">Freeway</a></h1>
+            
+        `
     }
 ];
 
