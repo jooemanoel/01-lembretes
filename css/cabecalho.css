@@ -1,8 +1,7 @@
 
 .cabecalho {
     width: 100%;
-    /* height: calc(15vh - 0.5rem); */
-    height: 15vh;
+    height: 15%;
     margin-bottom: 0.25rem;
     border-radius: var(--bordaRaio);
     display: flex;
@@ -14,7 +13,7 @@
 .cabecalho__titulo {
     flex: 1;
     width: 100%;
-    margin: 0.5vh 0;
+    margin-bottom: 0.125rem;
     border-radius: var(--bordaRaio);
     background-color: var(--altColor);
     display: flex;
@@ -48,6 +47,7 @@
 .cabecalho__menu {
     flex: 1;
     width: 100%;
+    margin-top: 0.125rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -55,7 +55,7 @@
 
 .cabecalho__menu__item {
     flex: 1;
-    margin: 0 0.1vw;
+    margin: 0 0.125rem;
     height: 100%;
     border-radius: var(--bordaRaio);
     background-color: var(--altColor);

@@ -1,6 +1,6 @@
 .principal {
     width: 100%;
-    height: 80vh;
+    height: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,20 +8,18 @@
 
 .principal__conteudo {
     flex: 1;
-    margin: 0 0.1vw;
-    box-sizing: border-box;
     height: 100%;
+    padding: 0.5rem;
     border-radius: var(--bordaRaio);
     background-color: var(--altColor);
 }
 
 .principal__conteudo__texto {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0;
     text-align: justify;
 }
 
 .principal__conteudo__botao {
-    width: 100%;
     padding: 0.5rem;
     border-radius: var(--bordaRaio);
     display: flex;
@@ -33,11 +31,4 @@
 
 .principal__conteudo__botao:hover {
     background-color: var(--hoverColor);
-}
-
-.principal__conteudo__foto {
-    width: 100%;
-    height: 100%;
-    border-radius: var(--bordaRaio);
-    object-fit: cover;
 }

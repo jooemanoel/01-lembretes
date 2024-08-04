@@ -35,7 +35,7 @@ body {
     background-color: var(--hoverColor);
 }
 
-@media (max-width: 800px) {
+@media screen and (max-width: 800px) {
 
     .cabecalho,
     .principal,
