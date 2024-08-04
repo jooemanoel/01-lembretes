@@ -1,0 +1,29 @@
+.rodape {
+    height: 5vh;
+    width: 100%;
+    margin: 0.5vh 0;
+    border-radius: var(--bordaRaio);
+    background-color: var(--altColor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.rodape__conteudo {
+    position: relative;
+    width: 60%;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: scroll 10s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}

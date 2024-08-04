@@ -1,3 +1,7 @@
+@import url("./cabecalho.css");
+@import url("./principal.css");
+@import url("./rodape.css");
+
 :root {
     --backColor: #1A3636;
     --fontColor: #D6BD98;
@@ -15,6 +19,9 @@
 }
 
 body {
+    width: calc(100vw - 0.5rem);
+    height: calc(100vh - 0.5rem);
+    padding: 0.25rem;
     background-color: var(--backColor);
     color: var(--fontColor);
     font-size: 1rem;
@@ -24,153 +31,8 @@ body {
     justify-content: center;
 }
 
-.cabecalho {
-    position: static;
-    width: 100vw;
-    height: 15vh;
-    border-radius: var(--bordaRaio);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.cabecalho__titulo {
-    flex: 1;
-    width: 99%;
-    margin: 0.5vh 0;
-    border-radius: var(--bordaRaio);
-    background-color: var(--altColor);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation-name: rolagem;
-    animation-duration: 1s;
-    animation-iteration-count: infinite;
-}
-
-@keyframes rolagem {
-    0% {
-        background-color: var(--altColor);
-        left: 0px;
-        top: 0px;
-    }
-
-    50% {
-        background-color: black;
-        left: 200px;
-        top: 200px;
-    }
-
-    100% {
-        background-color: var(--altColor);
-        left: 0px;
-        top: 0px;
-    }
-}
-
-.cabecalho__menu {
-    flex: 1;
-    width: 99%;
-    margin-bottom: 0.5vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.cabecalho__menu__item {
-    flex: 1;
-    margin: 0 0.1vw;
-    height: 100%;
-    border-radius: var(--bordaRaio);
-    background-color: var(--altColor);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--fontColor);
-    cursor: pointer;
-}
-
-.cabecalho__menu__item:hover {
-    background-color: yellow;
-}
-
 .ativo {
     background-color: var(--hoverColor);
-}
-
-.principal {
-    width: 99vw;
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.principal__conteudo {
-    flex: 1;
-    margin: 0 0.1vw;
-    box-sizing: border-box;
-    height: 100%;
-    border-radius: var(--bordaRaio);
-    background-color: var(--altColor);
-}
-
-.principal__conteudo__texto {
-    padding: 0.5rem 1rem;
-    text-align: justify;
-}
-
-.principal__conteudo__botao {
-    width: 100%;
-    padding: 0.5rem;
-    border-radius: var(--bordaRaio);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--fontColor);
-    text-decoration: none;
-}
-
-.principal__conteudo__botao:hover {
-    background-color: var(--hoverColor);
-}
-
-.principal__conteudo__foto {
-    width: 100%;
-    height: 100%;
-    border-radius: var(--bordaRaio);
-    object-fit: cover;
-}
-
-.rodape {
-    height: 4vh;
-    width: 98.8vw;
-    margin: 0.5vh 0;
-    border-radius: var(--bordaRaio);
-    background-color: var(--altColor);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.rodape__conteudo {
-    position: relative;
-    width: 60%;
-    overflow: hidden;
-    white-space: nowrap;
-    animation: scroll 10s linear infinite;
-}
-
-@keyframes scroll {
-    0% {
-        transform: translateX(100%);
-    }
-
-    100% {
-        transform: translateX(-100%);
-    }
 }
 
 @media (max-width: 800px) {
