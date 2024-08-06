@@ -1,14 +1,10 @@
 import { Comp as Comp } from "./Comp.js";
-
 const elementoBotoes = document.querySelectorAll('.cabecalho__menu__item');
 let botaoAtivo = elementoBotoes[0];
-
 const titulo = new Comp('h1', document.querySelector('.cabecalho__titulo'), true);
 titulo.elemento.classList.add('cabecalho__titulo__titulo');
-
 const secao = new Comp('section', document.querySelector('.principal'), true);
 secao.elemento.classList.add('principal__conteudo');
-
 for (let i = 0; i < elementoBotoes.length; i++) {
     elementoBotoes[i].addEventListener('click', function () {
         botaoAtivo.classList.remove('ativo');
@@ -18,7 +14,6 @@ for (let i = 0; i < elementoBotoes.length; i++) {
         secao.elemento.innerHTML = textoshtml[i].secao;
     });
 }
-
 const textoshtml = [
     {
         titulo: `João - Página de Treinamento`,
@@ -34,8 +29,7 @@ const textoshtml = [
     },
     {
         titulo: `Repositórios`,
-        secao:
-            `
+        secao: `
             <h1 class="principal__conteudo__botao"><a class="principal__conteudo__botao" href="https://github.com/jooemanoel?tab=repositories">Página Inicial</a></h1>
             <h1 class="principal__conteudo__botao"><a class="principal__conteudo__botao" href="https://github.com/jooemanoel/01-inicio">Início</a></h1>
             <h1 class="principal__conteudo__botao"><a class="principal__conteudo__botao" href="https://github.com/jooemanoel/02-pong">Pong</a></h1>
@@ -45,7 +39,7 @@ const textoshtml = [
         `
     }
 ];
-
 window.onload = () => {
-    elementoBotoes[0].click();
-}
+    const aux = elementoBotoes[0];
+    aux.click();
+};
