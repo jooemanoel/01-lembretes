@@ -1,10 +1,10 @@
 {
     "compilerOptions": {
         "target": "ES2022",
-        "outDir": "./app",
+        "outDir": "js",
         "noEmitOnError": true
     },
     "include": [
-        "./src/**/*"
+        "ts/**/*"
     ]
 }
