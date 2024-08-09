@@ -1,71 +1,46 @@
 
 .cabecalho {
-    width: 100%;
-    height: 15%;
-    margin-bottom: 0.25rem;
-    border-radius: var(--bordaRaio);
+    width: calc(100vw - 1rem);
+    height: 15vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+    gap: 0.5rem;
 }
 
 .cabecalho__titulo {
     flex: 1;
-    width: 100%;
-    margin-bottom: 0.125rem;
-    border-radius: var(--bordaRaio);
     background-color: var(--altColor);
     display: flex;
     align-items: center;
     justify-content: center;
-    animation-name: rolagem;
-    animation-duration: 1s;
-    animation-iteration-count: infinite;
-}
-
-@keyframes rolagem {
-    0% {
-        background-color: var(--altColor);
-        left: 0px;
-        top: 0px;
-    }
-
-    50% {
-        background-color: black;
-        left: 200px;
-        top: 200px;
-    }
-
-    100% {
-        background-color: var(--altColor);
-        left: 0px;
-        top: 0px;
-    }
+    box-shadow: 0 0 1rem;
+    padding: 0.5rem;
 }
 
 .cabecalho__menu {
     flex: 1;
     width: 100%;
-    margin-top: 0.125rem;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    gap: 0.5rem;
 }
 
 .cabecalho__menu__item {
     flex: 1;
-    margin: 0 0.125rem;
     height: 100%;
-    border-radius: var(--bordaRaio);
     background-color: var(--altColor);
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--fontColor);
     cursor: pointer;
+    box-shadow: 0 0 1rem;
+    padding: 0.5rem;
 }
 
 .cabecalho__menu__item:hover {
+    background-color: var(--hoverColor);
+}
+
+.ativo {
     background-color: yellow;
 }

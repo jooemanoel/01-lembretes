@@ -1,6 +1,6 @@
 .principal {
-    width: 100%;
-    height: 80%;
+    width: calc(100vw - 1rem);
+    height: calc(80vh - 2rem);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -10,12 +10,12 @@
     flex: 1;
     height: 100%;
     padding: 0.5rem;
-    border-radius: var(--bordaRaio);
     background-color: var(--altColor);
+    box-shadow: 0 0 1rem;
 }
 
 .principal__conteudo__texto {
-    padding: 0.5rem 0;
+    padding: 0.5rem;
     text-align: justify;
 }
 
