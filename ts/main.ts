@@ -1,12 +1,12 @@
-import { Comp as Comp } from "./Comp.js";
+import { Componente as Componente } from "./Componente.js";
 
 const elementoBotoes = document.querySelectorAll('.cabecalho__menu__item');
 let botaoAtivo = elementoBotoes[0];
 
-const titulo = new Comp('h1', document.querySelector('.cabecalho__titulo') as HTMLElement, true);
+const titulo = new Componente('h1', document.querySelector('.cabecalho__titulo') as HTMLElement, true);
 titulo.elemento.classList.add('cabecalho__titulo__titulo');
 
-const secao = new Comp('section', document.querySelector('.principal') as HTMLElement, true);
+const secao = new Componente('section', document.querySelector('.principal') as HTMLElement, true);
 secao.elemento.classList.add('principal__conteudo');
 
 for (let i = 0; i < elementoBotoes.length; i++) {

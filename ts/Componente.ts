@@ -1,4 +1,4 @@
-export class Comp {
+export class Componente {
     elemento: HTMLElement;
     tag: string;
     elementoPai: HTMLElement;
