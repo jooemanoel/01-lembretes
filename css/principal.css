@@ -1,7 +1,7 @@
 .principal {
     min-height: calc(80vh - 2rem);
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
     gap: 0.5rem;
     flex-wrap: wrap;
