@@ -73,6 +73,18 @@
 }
 
 @media screen and (max-width: 800px) {
+
+    .principal,
+    .principal__container,
+    .principal__container__conteudo,
+    .rodape {
+        height: auto;
+    }
+
+    .principal__container{
+        flex-basis: auto;
+    }
+
     .principal {
         flex-direction: column;
     }

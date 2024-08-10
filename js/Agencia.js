@@ -9,21 +9,6 @@ export class Agencia {
         {
             titulo: `Sobre Mim`,
             texto: `<h1 class="principal__conteudo__texto">Breve Histórico:</h1><p class="principal__conteudo__texto">Nascido em 1993, tenho atualmente 31 anos. Após 10 anos atuando como controlador de tráfego aéreo, estou iniciando uma nova carreira no BB, sendo designado inicialmente para atuar como desenvolvedor front-end.</p><p class="principal__conteudo__texto">Durante as primeiras semanas de treinamento, tive a oportunidade de realizar ótimos cursos na plataforma Alura para desenvolvimento com HTML e CSS, o que me permitiu criar esta página.</p>`
-        },
-        {
-            titulo: `Projetos`,
-            texto: `<h1 class="principal__conteudo__botao"><a class="principal__conteudo__botao" href="https://jooemanoel.github.io/03-tabela/">Tabela de Estoque</a></h1>`
-        },
-        {
-            titulo: `Repositórios`,
-            texto: `
-                <h1 class="principal__conteudo__botao"><a class="principal__conteudo__botao" href="https://github.com/jooemanoel?tab=repositories">Página Inicial</a></h1>
-                <h1 class="principal__conteudo__botao"><a class="principal__conteudo__botao" href="https://github.com/jooemanoel/01-inicio">Início</a></h1>
-                <h1 class="principal__conteudo__botao"><a class="principal__conteudo__botao" href="https://github.com/jooemanoel/02-pong">Pong</a></h1>
-                <h1 class="principal__conteudo__botao"><a class="principal__conteudo__botao" href="https://github.com/jooemanoel/03-tabela">Tabela</a></h1>
-                <h1 class="principal__conteudo__botao"><a class="principal__conteudo__botao" href="https://github.com/jooemanoel/04-freeway">Freeway</a></h1>
-                
-            `
         }
     ];
     constructor() {
