@@ -1,6 +1,6 @@
 import { Componente } from "./Componente.js";
 
-export class Agencia{
+export class Agencia {
     listaContainers: Componente[] = [];
     conteudosHTML = [
         {
@@ -12,32 +12,39 @@ export class Agencia{
             texto: `<h1 class="principal__conteudo__texto">Breve Histórico:</h1><p class="principal__conteudo__texto">Nascido em 1993, tenho atualmente 31 anos. Após 10 anos atuando como controlador de tráfego aéreo, estou iniciando uma nova carreira no BB, sendo designado inicialmente para atuar como desenvolvedor front-end.</p><p class="principal__conteudo__texto">Durante as primeiras semanas de treinamento, tive a oportunidade de realizar ótimos cursos na plataforma Alura para desenvolvimento com HTML e CSS, o que me permitiu criar esta página.</p>`
         }
     ];
-    constructor(){
+    constructor() {
+        const leitura = JSON.parse(localStorage.getItem('lembretes'));
+        console.log(leitura);
+        this.conteudosHTML = leitura ? leitura : this.conteudosHTML;
         for (const conteudo of this.conteudosHTML) {
             this.novoLembrete(conteudo);
         }
     }
-    novoLembrete(conteudo){
+    novoLembrete(conteudo) {
         const container = new Componente('section', document.querySelector<HTMLElement>('.principal'));
-            container.elemento.classList.add('principal__container');
-            
-            const titulo = new Componente('section', container.elemento);
-            titulo.elemento.classList.add('principal__container__titulo');
-            titulo.elemento.innerHTML = conteudo.titulo;
-            
-            const texto = new Componente('section', container.elemento);
-            texto.elemento.classList.add('principal__container__conteudo');
-            texto.elemento.innerHTML = conteudo.texto;
-        
-            this.listaContainers.push(container);
+        container.elemento.classList.add('principal__container');
+
+        const titulo = new Componente('section', container.elemento);
+        titulo.elemento.classList.add('principal__container__titulo');
+        titulo.elemento.innerHTML = conteudo.titulo;
+
+        const texto = new Componente('section', container.elemento);
+        texto.elemento.classList.add('principal__container__conteudo');
+        texto.elemento.innerHTML = conteudo.texto;
+
+        this.listaContainers.push(container);
+        if (this.listaContainers.length > this.conteudosHTML.length){
+            this.conteudosHTML.push(conteudo);
+            localStorage.setItem('lembretes', JSON.stringify(this.conteudosHTML));
+        }
     }
-    mostrar(){
-        for(const container of this.listaContainers){
+    mostrar() {
+        for (const container of this.listaContainers) {
             container.mostrar();
         }
     }
-    ocultar(){
-        for(const container of this.listaContainers){
+    ocultar() {
+        for (const container of this.listaContainers) {
             container.ocultar();
         }
     }

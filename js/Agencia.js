@@ -12,6 +12,9 @@ export class Agencia {
         }
     ];
     constructor() {
+        const leitura = JSON.parse(localStorage.getItem('lembretes'));
+        console.log(leitura);
+        this.conteudosHTML = leitura ? leitura : this.conteudosHTML;
         for (const conteudo of this.conteudosHTML) {
             this.novoLembrete(conteudo);
         }
@@ -26,6 +29,10 @@ export class Agencia {
         texto.elemento.classList.add('principal__container__conteudo');
         texto.elemento.innerHTML = conteudo.texto;
         this.listaContainers.push(container);
+        if (this.listaContainers.length > this.conteudosHTML.length) {
+            this.conteudosHTML.push(conteudo);
+            localStorage.setItem('lembretes', JSON.stringify(this.conteudosHTML));
+        }
     }
     mostrar() {
         for (const container of this.listaContainers) {

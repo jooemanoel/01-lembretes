@@ -3,11 +3,11 @@ import { Formulario } from "./Formulario.js";
 
 const agencia = new Agencia();
 const formulario = new Formulario();
-formulario.form.elemento.onsubmit = (event)=>{
+formulario.form.elemento.onsubmit = (event) => {
     event.preventDefault();
     const auxTitulo = formulario.inputTitulo.elemento as HTMLInputElement;
     const auxTexto = formulario.textarea.elemento as HTMLTextAreaElement;
-    const objeto = {titulo: auxTitulo.value, texto: auxTexto.value};
+    const objeto = { titulo: auxTitulo.value, texto: auxTexto.value };
     agencia.novoLembrete(objeto);
     const aux = formulario.form.elemento as HTMLFormElement;
     aux.reset();
@@ -26,7 +26,13 @@ botaoNovo.onclick = () => {
     formulario.mostrar();
 }
 
-window.onload = () =>{
+const botaoLimpar = <HTMLButtonElement>document.querySelectorAll('.cabecalho__menu__item')[2];
+botaoLimpar.onclick = () => {
+    localStorage.clear();
+    location.reload();
+}
+
+window.onload = () => {
     agencia.mostrar();
     formulario.ocultar();
 }

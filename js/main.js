@@ -22,6 +22,11 @@ botaoNovo.onclick = () => {
     agencia.ocultar();
     formulario.mostrar();
 };
+const botaoLimpar = document.querySelectorAll('.cabecalho__menu__item')[2];
+botaoLimpar.onclick = () => {
+    localStorage.clear();
+    location.reload();
+};
 window.onload = () => {
     agencia.mostrar();
     formulario.ocultar();
