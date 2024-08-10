@@ -7,7 +7,7 @@
     --fontColor: #1A3636;
     --altColor: #D6BD98;
     --hoverColor: #677D6A;
-    --bordaRaio: 0.5rem;
+    --spanColor: orange;
 }
 
 * {
@@ -19,22 +19,20 @@
 }
 
 body {
-    padding: 0.5rem;
     background-color: var(--backColor);
     color: var(--fontColor);
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 0.5rem;
 }
 
+.hidden{
+    display: none;
+}
+
 @media screen and (max-width: 800px) {
-
-    .cabecalho,
-    .principal,
-    .rodape {
-        width: 98vw;
-    }
-
     .cabecalho,
     .cabecalho__titulo,
     .cabecalho__menu,
@@ -47,26 +45,13 @@ body {
     }
 
     .cabecalho__menu {
-        margin: 0.5vh 0;
         flex-direction: column;
     }
 
     .cabecalho__menu__item {
-        margin: 0.5vh 0;
-        padding: 0.5vh 0;
+        padding: 0.5rem 0;
         width: 100%;
     }
-
-    .principal {
-        flex-direction: column;
-    }
-
-    .principal__conteudo {
-        margin: 0.5vh 0;
-        width: 100%;
-    }
-
-    .rodape {
-        padding: 0.5vh 0;
-    }
+    
+    
 }
