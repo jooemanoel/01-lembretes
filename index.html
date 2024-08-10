@@ -11,13 +11,29 @@
 <body>
     <header class="cabecalho">
         <div class="cabecalho__titulo">
+
+            <input class="cabecalho__botao" type="checkbox" name="menu" id="menu">
+            <label class="cabecalho__hamburguer" for="menu">
+                <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-three-bars Button-visual">
+                    <path d="M1 2.75A.75.75 0 0 1 1.75 2h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75Zm0 5A.75.75 0 0 1 1.75 7h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 7.75ZM1.75 12h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Z"></path>
+                </svg>
+            </label>
+
             <h1 class="cabecalho__titulo__titulo">João - Agência de Lembretes</h1>
+
+            <ul class="cabecalho__lista">
+                <li class="cabecalho__lista__item">Início</li>
+                <li class="cabecalho__lista__item">Novo Lembrete</li>
+                <li class="cabecalho__lista__item">Limpar o Cache</li>
+            </ul>
+
         </div>
         <nav class="cabecalho__menu">
             <p class="cabecalho__menu__item">Início</p>
             <p class="cabecalho__menu__item">Novo Lembrete</p>
             <p class="cabecalho__menu__item">Limpar o Cache</p>
         </nav>
+        <ul class="cabecalho__lista"></ul>
     </header>
     <main class="principal"></main>
     <footer class="rodape">

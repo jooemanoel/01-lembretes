@@ -23,35 +23,12 @@ body {
     color: var(--fontColor);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
+    padding: 0.5rem;
     gap: 0.5rem;
 }
 
 .hidden{
     display: none;
-}
-
-@media screen and (max-width: 800px) {
-    .cabecalho,
-    .cabecalho__titulo,
-    .cabecalho__menu,
-    .cabecalho__menu__item,
-    .principal,
-    .principal__conteudo,
-    .principal__conteudo__foto,
-    .rodape {
-        height: auto;
-    }
-
-    .cabecalho__menu {
-        flex-direction: column;
-    }
-
-    .cabecalho__menu__item {
-        padding: 0.5rem 0;
-        width: 100%;
-    }
-    
-    
 }

@@ -15,13 +15,12 @@ export class Agencia {
         const container = new Componente('section', document.querySelector<HTMLElement>('.principal'));
         container.elemento.classList.add('principal__container');
 
-        const titulo = new Componente('section', container.elemento);
-        titulo.elemento.classList.add('principal__container__titulo');
-        titulo.elemento.innerHTML = conteudo.titulo;
-
         const texto = new Componente('section', container.elemento);
         texto.elemento.classList.add('principal__container__conteudo');
-        texto.elemento.innerHTML = conteudo.texto;
+        texto.elemento.innerHTML = `
+            <h1 class="principal__conteudo__texto">${conteudo.titulo}</h1>
+            <p class="principal__conteudo__texto">${conteudo.texto}</p>
+        `;
 
         this.listaContainers.push(container);
         if (this.listaContainers.length > this.conteudosHTML.length){

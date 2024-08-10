@@ -1,14 +1,18 @@
 .rodape {
-    width: 100%;
-    padding: 0.5rem 0;
+    height: 5vh;
     background-color: var(--altColor);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     box-shadow: 0 0 1rem;
-    
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
 }
 
 .rodape__conteudo {
     padding: 0.5rem;
+}
+
+@media screen and (max-width: 800px) {
+    .rodape {
+        height: auto;
+    }
 }
