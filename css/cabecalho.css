@@ -56,6 +56,10 @@
     padding: 0.5rem;
 }
 
+.cabecalho__titulo__titulo{
+    flex: 1;
+}
+
 .cabecalho__menu {
     display: flex;
     align-items: stretch;
