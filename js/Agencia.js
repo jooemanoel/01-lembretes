@@ -4,7 +4,6 @@ export class Agencia {
     conteudosHTML = [];
     constructor() {
         const leitura = JSON.parse(localStorage.getItem('lembretes'));
-        console.log(leitura);
         this.conteudosHTML = leitura ? leitura : this.conteudosHTML;
         for (const conteudo of this.conteudosHTML) {
             this.novoLembrete(conteudo);

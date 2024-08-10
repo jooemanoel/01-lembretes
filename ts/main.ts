@@ -11,7 +11,7 @@ formulario.form.elemento.onsubmit = event => {
     agencia.novoLembrete(objeto);
     const aux = formulario.form.elemento as HTMLFormElement;
     aux.reset();
-    botaoAgencia.click();
+    mostrarAgencia();
 }
 
 const menuItens = document.querySelectorAll('.cabecalho__menu__item');

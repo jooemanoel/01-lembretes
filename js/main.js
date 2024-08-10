@@ -10,7 +10,7 @@ formulario.form.elemento.onsubmit = event => {
     agencia.novoLembrete(objeto);
     const aux = formulario.form.elemento;
     aux.reset();
-    botaoAgencia.click();
+    mostrarAgencia();
 };
 const menuItens = document.querySelectorAll('.cabecalho__menu__item');
 const listaItens = document.querySelectorAll('.cabecalho__lista__item');
