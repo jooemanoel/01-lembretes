@@ -6,8 +6,8 @@ formulario.form.elemento.onsubmit = event => {
     event.preventDefault();
     const auxTitulo = formulario.inputTitulo.elemento;
     const auxTexto = formulario.textarea.elemento;
-    const objeto = { titulo: auxTitulo.value, texto: auxTexto.value };
-    agencia.novoLembrete(objeto);
+    const auxLembrete = { titulo: auxTitulo.value, texto: auxTexto.value };
+    agencia.novoLembrete(auxLembrete);
     const aux = formulario.form.elemento;
     aux.reset();
     mostrarAgencia();

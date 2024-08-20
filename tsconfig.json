@@ -2,7 +2,8 @@
     "compilerOptions": {
         "target": "ES2022",
         "outDir": "js",
-        "noEmitOnError": true
+        "noEmitOnError": true,
+        "noImplicitAny": true
     },
     "include": [
         "ts/**/*"

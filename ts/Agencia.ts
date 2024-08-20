@@ -1,8 +1,9 @@
 import { Componente } from "./Componente.js";
+import { Lembrete } from "./Lembrete.js";
 
 export class Agencia {
     listaContainers: Componente[] = [];
-    conteudosHTML = [];
+    conteudosHTML: Lembrete[] = [];
     constructor() {
         const leitura = JSON.parse(localStorage.getItem('lembretes'));
         this.conteudosHTML = leitura ? leitura : this.conteudosHTML;
@@ -10,7 +11,7 @@ export class Agencia {
             this.novoLembrete(conteudo);
         }
     }
-    novoLembrete(conteudo) {
+    novoLembrete(conteudo: Lembrete) {
         const container = new Componente('section', document.querySelector<HTMLElement>('.principal'));
         container.elemento.classList.add('principal__container');
 
@@ -22,7 +23,7 @@ export class Agencia {
         `;
 
         this.listaContainers.push(container);
-        if (this.listaContainers.length > this.conteudosHTML.length){
+        if (this.listaContainers.length > this.conteudosHTML.length) {
             this.conteudosHTML.push(conteudo);
             localStorage.setItem('lembretes', JSON.stringify(this.conteudosHTML));
         }

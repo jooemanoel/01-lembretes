@@ -1,5 +1,6 @@
 import { Agencia } from "./Agencia.js";
 import { Formulario } from "./Formulario.js";
+import { Lembrete } from "./Lembrete.js";
 
 const agencia = new Agencia();
 const formulario = new Formulario();
@@ -7,8 +8,8 @@ formulario.form.elemento.onsubmit = event => {
     event.preventDefault();
     const auxTitulo = formulario.inputTitulo.elemento as HTMLInputElement;
     const auxTexto = formulario.textarea.elemento as HTMLTextAreaElement;
-    const objeto = { titulo: auxTitulo.value, texto: auxTexto.value };
-    agencia.novoLembrete(objeto);
+    const auxLembrete: Lembrete = { titulo: auxTitulo.value, texto: auxTexto.value };
+    agencia.novoLembrete(auxLembrete);
     const aux = formulario.form.elemento as HTMLFormElement;
     aux.reset();
     mostrarAgencia();
@@ -18,7 +19,7 @@ const menuItens = document.querySelectorAll('.cabecalho__menu__item');
 const listaItens = document.querySelectorAll('.cabecalho__lista__item');
 const input = document.querySelector<HTMLInputElement>('.cabecalho__botao');
 
-const mostrarAgencia = ()=>{
+const mostrarAgencia = () => {
     input.checked = false;
     agencia.mostrar();
     formulario.ocultar();
@@ -30,7 +31,7 @@ botaoAgencia.onclick = mostrarAgencia;
 listaAgencia.onclick = mostrarAgencia;
 
 
-const mostrarNovo = ()=>{
+const mostrarNovo = () => {
     input.checked = false;
     agencia.ocultar();
     formulario.mostrar();
@@ -41,7 +42,7 @@ const listaNovo = <HTMLElement>listaItens[1];
 botaoNovo.onclick = mostrarNovo;
 listaNovo.onclick = mostrarNovo;
 
-const limpar = ()=>{
+const limpar = () => {
     input.checked = false;
     localStorage.clear();
     location.reload();
