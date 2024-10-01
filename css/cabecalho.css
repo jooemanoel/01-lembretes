@@ -1,15 +1,11 @@
 .cabecalho {
-    /* height: 15vh; */
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
     padding: 0.5rem;
     gap: 0.5rem;
-    background: linear-gradient(to right, var(--cores-dancantes));
     position: relative;
-    z-index: 999;
-    animation: coresDancantes 2s linear infinite;
 }
 
 .cabecalho__titulo {
@@ -19,12 +15,6 @@
     justify-content: center;
     box-shadow: 0 0 1rem;
     padding: 0.5rem;
-}
-
-@keyframes coresDancantes {
-    100% {
-        filter: hue-rotate(360deg);
-    }
 }
 
 .cabecalho__botao {
