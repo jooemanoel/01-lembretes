@@ -14,45 +14,28 @@ formulario.form.elemento.onsubmit = event => {
     aux.reset();
     mostrarAgencia();
 }
-
-const menuItens = document.querySelectorAll('.cabecalho__menu__item');
-const listaItens = document.querySelectorAll('.cabecalho__lista__item');
-const input = document.querySelector<HTMLInputElement>('.cabecalho__botao');
-
+// função e evento para mostrar a agência
 const mostrarAgencia = () => {
-    input.checked = false;
     agencia.mostrar();
     formulario.ocultar();
 }
-
-const botaoAgencia = <HTMLElement>menuItens[0];
-const listaAgencia = <HTMLElement>listaItens[0];
-botaoAgencia.onclick = mostrarAgencia;
-listaAgencia.onclick = mostrarAgencia;
-
-
+const botaoInicio = document.querySelector('#botao-inicio') as HTMLElement;
+botaoInicio.onclick = mostrarAgencia;
+// função e evento para mostrar o formulário
 const mostrarNovo = () => {
-    input.checked = false;
     agencia.ocultar();
     formulario.mostrar();
 }
-
-const botaoNovo = <HTMLElement>menuItens[1];
-const listaNovo = <HTMLElement>listaItens[1];
+const botaoNovo = document.querySelector('#botao-novo') as HTMLElement;
 botaoNovo.onclick = mostrarNovo;
-listaNovo.onclick = mostrarNovo;
-
+// função e evento para limpar o localStorage
 const limpar = () => {
-    input.checked = false;
     localStorage.clear();
     location.reload();
 }
-
-const botaoLimpar = <HTMLElement>menuItens[2];
-const listaLimpar = <HTMLElement>listaItens[2];
+const botaoLimpar = document.querySelector('#botao-limpar') as HTMLElement;
 botaoLimpar.onclick = limpar;
-listaLimpar.onclick = limpar;
-
+// mostra a agência ao carregar a página
 window.onload = () => {
     mostrarAgencia();
 }

@@ -12,36 +12,28 @@ formulario.form.elemento.onsubmit = event => {
     aux.reset();
     mostrarAgencia();
 };
-const menuItens = document.querySelectorAll('.cabecalho__menu__item');
-const listaItens = document.querySelectorAll('.cabecalho__lista__item');
-const input = document.querySelector('.cabecalho__botao');
+// função e evento para mostrar a agência
 const mostrarAgencia = () => {
-    input.checked = false;
     agencia.mostrar();
     formulario.ocultar();
 };
-const botaoAgencia = menuItens[0];
-const listaAgencia = listaItens[0];
-botaoAgencia.onclick = mostrarAgencia;
-listaAgencia.onclick = mostrarAgencia;
+const botaoInicio = document.querySelector('#botao-inicio');
+botaoInicio.onclick = mostrarAgencia;
+// função e evento para mostrar o formulário
 const mostrarNovo = () => {
-    input.checked = false;
     agencia.ocultar();
     formulario.mostrar();
 };
-const botaoNovo = menuItens[1];
-const listaNovo = listaItens[1];
+const botaoNovo = document.querySelector('#botao-novo');
 botaoNovo.onclick = mostrarNovo;
-listaNovo.onclick = mostrarNovo;
+// função e evento para limpar o localStorage
 const limpar = () => {
-    input.checked = false;
     localStorage.clear();
     location.reload();
 };
-const botaoLimpar = menuItens[2];
-const listaLimpar = listaItens[2];
+const botaoLimpar = document.querySelector('#botao-limpar');
 botaoLimpar.onclick = limpar;
-listaLimpar.onclick = limpar;
+// mostra a agência ao carregar a página
 window.onload = () => {
     mostrarAgencia();
 };

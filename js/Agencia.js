@@ -1,37 +1,43 @@
 import { Componente } from "./Componente.js";
 export class Agencia {
-    listaContainers = [];
-    conteudosHTML = [];
+    listaColunas = [];
+    lembretes = [];
     constructor() {
         const leitura = JSON.parse(localStorage.getItem('lembretes'));
-        this.conteudosHTML = leitura ? leitura : this.conteudosHTML;
-        for (const conteudo of this.conteudosHTML) {
-            this.novoLembrete(conteudo);
+        this.lembretes = leitura ? leitura : this.lembretes;
+        for (const lembrete of this.lembretes) {
+            this.novoLembrete(lembrete);
         }
     }
     novoLembrete(conteudo) {
-        const container = new Componente('section', document.querySelector('.principal'));
-        container.elemento.classList.add('principal__container');
-        const texto = new Componente('section', container.elemento);
-        texto.elemento.classList.add('principal__container__conteudo');
+        const coluna = new Componente('div', document.querySelector('#principal'));
+        coluna.elemento.classList.add('col');
+        coluna.elemento.classList.add('col-12');
+        coluna.elemento.classList.add('col-md');
+        const texto = new Componente('div', coluna.elemento);
+        texto.elemento.classList.add('card');
         texto.elemento.innerHTML = `
-            <h1 class="principal__conteudo__texto">${conteudo.titulo}</h1>
-            <p class="principal__conteudo__texto">${conteudo.texto}</p>
+        <div class="card-header">
+            ${conteudo.titulo}
+        </div>
+        <div class="card-body">
+            <p class="card-text">${conteudo.texto}</p>
+        </div>
         `;
-        this.listaContainers.push(container);
-        if (this.listaContainers.length > this.conteudosHTML.length) {
-            this.conteudosHTML.push(conteudo);
-            localStorage.setItem('lembretes', JSON.stringify(this.conteudosHTML));
+        this.listaColunas.push(coluna);
+        if (this.listaColunas.length > this.lembretes.length) {
+            this.lembretes.push(conteudo);
+            localStorage.setItem('lembretes', JSON.stringify(this.lembretes));
         }
     }
     mostrar() {
-        for (const container of this.listaContainers) {
-            container.mostrar();
+        for (const coluna of this.listaColunas) {
+            coluna.mostrar();
         }
     }
     ocultar() {
-        for (const container of this.listaContainers) {
-            container.ocultar();
+        for (const coluna of this.listaColunas) {
+            coluna.ocultar();
         }
     }
 }

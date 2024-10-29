@@ -1,0 +1,22 @@
+{
+  "name": "01-lembretes",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jooemanoel/01-lembretes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jooemanoel/01-lembretes/issues"
+  },
+  "homepage": "https://github.com/jooemanoel/01-lembretes#readme",
+  "description": "",
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}

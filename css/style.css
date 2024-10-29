@@ -1,33 +1,8 @@
-@import url("./cabecalho.css");
-@import url("./principal.css");
-@import url("./rodape.css");
-
-:root {
-    --backColor: lightgray;
-    --fontColor: #1A3636;
-    --altColor: #D6BD98;
-    --hoverColor: #677D6A;
-    --spanColor: orange;
-}
-
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
     box-sizing: border-box;
-}
-
-body {
-    background-color: var(--backColor);
-    color: var(--fontColor);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-    padding: 0.5rem;
-    gap: 0.5rem;
 }
 
 .hidden {
