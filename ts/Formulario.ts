@@ -1,10 +1,11 @@
 import { Componente } from "./Componente.js";
 
 export class Formulario extends Componente {
-    titulo: Componente;
     form: Componente;
+    divTitulo: Componente;
     labelTitulo: Componente;
     inputTitulo: Componente;
+    divTexto: Componente;
     labelTexto: Componente;
     textarea: Componente;
     confirmar: Componente;
@@ -14,32 +15,31 @@ export class Formulario extends Componente {
         this.elemento.classList.add('col-12');
         this.elemento.classList.add('col-md');
 
-        this.titulo = new Componente('div', this.elemento);
-        this.titulo.elemento.classList.add('card');
-        this.titulo.elemento.classList.add('p-3');
-        this.titulo.elemento.classList.add('mb-3');
-        this.titulo.elemento.innerText = 'Novo Lembrete';
-
         this.form = new Componente('form', this.elemento);
 
-        this.labelTitulo = new Componente('label', this.form.elemento);
+        this.divTitulo = new Componente('div', this.form.elemento);
+        this.divTitulo.elemento.classList.add('mb-3');
+
+        this.labelTitulo = new Componente('label', this.divTitulo.elemento);
         this.labelTitulo.elemento.classList.add('form-label');
         this.labelTitulo.elemento.textContent = 'Título:';
 
-        this.inputTitulo = new Componente('input', this.form.elemento);
+        this.inputTitulo = new Componente('input', this.divTitulo.elemento);
         this.inputTitulo.elemento.classList.add('form-control');
 
-        this.labelTexto = new Componente('label', this.form.elemento);
+        this.divTexto = new Componente('div', this.form.elemento);
+        this.divTexto.elemento.classList.add('mb-3');
+
+        this.labelTexto = new Componente('label', this.divTexto.elemento);
         this.labelTexto.elemento.classList.add('form-label');
         this.labelTexto.elemento.textContent = 'Texto:';
 
-        this.textarea = new Componente('textarea', this.form.elemento);
+        this.textarea = new Componente('textarea', this.divTexto.elemento);
         this.textarea.elemento.classList.add('form-control');
 
         this.confirmar = new Componente('button', this.form.elemento);
         const aux = this.confirmar.elemento as HTMLButtonElement;
         aux.type = 'submit';
-        this.confirmar.elemento.classList.add('mt-3');
         this.confirmar.elemento.classList.add('btn');
         this.confirmar.elemento.classList.add('btn-primary');
         this.confirmar.elemento.textContent = 'Confirmar';

@@ -2,16 +2,18 @@ import { Agencia } from "./Agencia.js";
 import { Formulario } from "./Formulario.js";
 import { Lembrete } from "./Lembrete.js";
 
+// cria a Agência e o Formulário
 const agencia = new Agencia();
 const formulario = new Formulario();
+// Atribui o evento de criar um novo lembrete
 formulario.form.elemento.onsubmit = event => {
     event.preventDefault();
-    const auxTitulo = formulario.inputTitulo.elemento as HTMLInputElement;
-    const auxTexto = formulario.textarea.elemento as HTMLTextAreaElement;
-    const auxLembrete: Lembrete = { titulo: auxTitulo.value, texto: auxTexto.value };
+    const auxLembrete: Lembrete = {
+        titulo: (formulario.inputTitulo.elemento as HTMLInputElement).value,
+        texto: (formulario.textarea.elemento as HTMLTextAreaElement).value
+    };
     agencia.novoLembrete(auxLembrete);
-    const aux = formulario.form.elemento as HTMLFormElement;
-    aux.reset();
+    (formulario.form.elemento as HTMLFormElement).reset();
     mostrarAgencia();
 }
 // função e evento para mostrar a agência
@@ -29,12 +31,19 @@ const mostrarNovo = () => {
 const botaoNovo = document.querySelector('#botao-novo') as HTMLElement;
 botaoNovo.onclick = mostrarNovo;
 // função e evento para limpar o localStorage
+const abrirModalLimpar = () => {
+    const botaoAbrirModal = document.querySelector('#botao-abrir-modal') as HTMLButtonElement;
+    botaoAbrirModal.click();
+}
+const botaoLimpar = document.querySelector('#botao-limpar') as HTMLElement;
+botaoLimpar.onclick = abrirModalLimpar;
+// Botão de confirmar dentro do modal
 const limpar = () => {
     localStorage.clear();
     location.reload();
 }
-const botaoLimpar = document.querySelector('#botao-limpar') as HTMLElement;
-botaoLimpar.onclick = limpar;
+const botaoLimparMesmo = document.querySelector('#botao-limpar-mesmo') as HTMLButtonElement;
+botaoLimparMesmo.onclick = limpar;
 // mostra a agência ao carregar a página
 window.onload = () => {
     mostrarAgencia();
