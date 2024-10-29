@@ -1,38 +1,26 @@
 import { Componente } from "./Componente.js";
 export class Formulario extends Componente {
     form;
-    divTitulo;
-    labelTitulo;
-    inputTitulo;
-    divTexto;
-    labelTexto;
-    textarea;
+    labelLembrete;
+    inputLembrete;
     confirmar;
     constructor() {
         super('div', document.querySelector('#principal'));
         this.elemento.classList.add('col');
         this.elemento.classList.add('col-12');
-        this.elemento.classList.add('col-md');
         this.form = new Componente('form', this.elemento);
-        this.divTitulo = new Componente('div', this.form.elemento);
-        this.divTitulo.elemento.classList.add('mb-3');
-        this.labelTitulo = new Componente('label', this.divTitulo.elemento);
-        this.labelTitulo.elemento.classList.add('form-label');
-        this.labelTitulo.elemento.textContent = 'Título:';
-        this.inputTitulo = new Componente('input', this.divTitulo.elemento);
-        this.inputTitulo.elemento.classList.add('form-control');
-        this.divTexto = new Componente('div', this.form.elemento);
-        this.divTexto.elemento.classList.add('mb-3');
-        this.labelTexto = new Componente('label', this.divTexto.elemento);
-        this.labelTexto.elemento.classList.add('form-label');
-        this.labelTexto.elemento.textContent = 'Texto:';
-        this.textarea = new Componente('textarea', this.divTexto.elemento);
-        this.textarea.elemento.classList.add('form-control');
+        this.form.elemento.classList.add('d-flex');
+        this.form.elemento.classList.add('flex-column');
+        this.form.elemento.classList.add('gap-3');
+        this.labelLembrete = new Componente('label', this.form.elemento);
+        this.labelLembrete.elemento.classList.add('form-label');
+        this.labelLembrete.elemento.textContent = 'Lembrete:';
+        this.inputLembrete = new Componente('input', this.form.elemento);
+        this.inputLembrete.elemento.classList.add('form-control');
         this.confirmar = new Componente('button', this.form.elemento);
-        const aux = this.confirmar.elemento;
-        aux.type = 'submit';
         this.confirmar.elemento.classList.add('btn');
         this.confirmar.elemento.classList.add('btn-primary');
+        this.confirmar.elemento.type = 'submit';
         this.confirmar.elemento.textContent = 'Confirmar';
     }
 }

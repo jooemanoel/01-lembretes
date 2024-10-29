@@ -1,6 +1,5 @@
 import { Agencia } from "./Agencia.js";
 import { Formulario } from "./Formulario.js";
-import { Lembrete } from "./Lembrete.js";
 
 // cria a Agência e o Formulário
 const agencia = new Agencia();
@@ -8,11 +7,7 @@ const formulario = new Formulario();
 // Atribui o evento de criar um novo lembrete
 formulario.form.elemento.onsubmit = event => {
     event.preventDefault();
-    const auxLembrete: Lembrete = {
-        titulo: (formulario.inputTitulo.elemento as HTMLInputElement).value,
-        texto: (formulario.textarea.elemento as HTMLTextAreaElement).value
-    };
-    agencia.novoLembrete(auxLembrete);
+    agencia.novoLembrete((formulario.inputLembrete.elemento as HTMLInputElement).value);
     (formulario.form.elemento as HTMLFormElement).reset();
     mostrarAgencia();
 }

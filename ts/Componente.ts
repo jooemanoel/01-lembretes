@@ -7,9 +7,9 @@ export class Componente {
         this.elementoPai.appendChild(this.elemento);
     }
     mostrar() {
-        this.elemento.classList.remove('hidden');
+        this.elemento.classList.remove('d-none');
     }
     ocultar() {
-        this.elemento.classList.add('hidden');
+        this.elemento.classList.add('d-none');
     }
 }

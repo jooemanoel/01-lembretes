@@ -1,32 +1,17 @@
-import { Componente } from "./Componente.js";
-import { Lembrete } from "./Lembrete.js";
+import { Coluna } from "./Coluna.js";
+import { Service } from "./service.js";
 
 export class Agencia {
-    listaColunas: Componente[] = [];
-    lembretes: Lembrete[] = [];
+    listaColunas: Coluna[] = [];
+    service: Service;
+    lembretes: string[] = [];
     constructor() {
-        const leitura = JSON.parse(localStorage.getItem('lembretes'));
-        this.lembretes = leitura ? leitura : this.lembretes;
-        for (const lembrete of this.lembretes) {
-            this.novoLembrete(lembrete);
-        }
+        this.service = new Service();
+        this.lembretes = JSON.parse(localStorage.getItem('lembretes') ?? '[]');
+        this.lembretes.forEach(lembrete => this.novoLembrete(lembrete));
     }
-    novoLembrete(conteudo: Lembrete) {
-        const coluna = new Componente('div', document.querySelector<HTMLElement>('#principal'));
-        coluna.elemento.classList.add('col');
-        coluna.elemento.classList.add('col-12');
-        coluna.elemento.classList.add('col-md');
-        const texto = new Componente('div', coluna.elemento);
-        texto.elemento.classList.add('card');
-        texto.elemento.innerHTML = `
-        <div class="card-header">
-            ${conteudo.titulo}
-        </div>
-        <div class="card-body">
-            <p class="card-text">${conteudo.texto}</p>
-        </div>
-        `;
-        this.listaColunas.push(coluna);
+    novoLembrete(conteudo: string) {
+        this.listaColunas.push(new Coluna(document.querySelector<HTMLElement>('#principal'), conteudo));
         if (this.listaColunas.length > this.lembretes.length) {
             this.lembretes.push(conteudo);
             localStorage.setItem('lembretes', JSON.stringify(this.lembretes));

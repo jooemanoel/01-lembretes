@@ -6,11 +6,7 @@ const formulario = new Formulario();
 // Atribui o evento de criar um novo lembrete
 formulario.form.elemento.onsubmit = event => {
     event.preventDefault();
-    const auxLembrete = {
-        titulo: formulario.inputTitulo.elemento.value,
-        texto: formulario.textarea.elemento.value
-    };
-    agencia.novoLembrete(auxLembrete);
+    agencia.novoLembrete(formulario.inputLembrete.elemento.value);
     formulario.form.elemento.reset();
     mostrarAgencia();
 };
