@@ -6,15 +6,15 @@ export class Agencia {
     lembretes = [];
     constructor() {
         this.service = new Service();
-        this.lembretes = JSON.parse(localStorage.getItem('lembretes') ?? '[]');
-        this.lembretes.forEach(lembrete => this.novoLembrete(lembrete));
+        this.service.lembretes.forEach(lembrete => this.criarColuna(lembrete));
+        this.lembretes = this.service.lembretes;
     }
-    novoLembrete(conteudo) {
-        this.listaColunas.push(new Coluna(document.querySelector('#principal'), conteudo));
-        if (this.listaColunas.length > this.lembretes.length) {
-            this.lembretes.push(conteudo);
-            localStorage.setItem('lembretes', JSON.stringify(this.lembretes));
-        }
+    criarColuna(lembrete) {
+        this.listaColunas.push(new Coluna(document.querySelector('#principal'), lembrete));
+    }
+    novoLembrete(lembrete) {
+        this.criarColuna(lembrete);
+        this.service.novoLembrete(lembrete);
     }
     mostrar() {
         for (const coluna of this.listaColunas) {

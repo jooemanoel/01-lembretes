@@ -15,14 +15,14 @@
     <!-- cabeçalho da página -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Agência de lembretes</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" id="botao-inicio" href="#">Agência de lembretes</a>
+            <button class="navbar-toggler" id="botao-hamburguer" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav gap-3">
-                    <a class="nav-link" id="botao-inicio" href="#">Início</a>
+                <div class="navbar-nav gap-3 text-center">
                     <a class="nav-link" id="botao-novo" href="#">Novo</a>
                     <a class="nav-link" id="botao-limpar" href="#">Limpar</a>
                 </div>
@@ -30,7 +30,9 @@
         </div>
     </nav>
     <!-- div principal onde os elementos são incluídos -->
-    <div class="row p-3" id="principal"></div>
+    <div class="container">
+        <div class="row mt-3" id="principal"></div>
+    </div>
     <!-- botao cosmetico para ativação do modal -->
     <button type="button" class="btn btn-primary d-none" id="botao-abrir-modal" data-bs-toggle="modal"
         data-bs-target="#exampleModal">
