@@ -1,13 +1,13 @@
 import { Componente } from "./Componente.js";
-import { Service } from "./service.js";
 export class Coluna extends Componente {
+    agencia;
     conteudo;
     card;
     cardHeader;
     titulo;
     botaoExcluir;
     cardBody;
-    constructor(elementoPai, conteudo) {
+    constructor(elementoPai, conteudo, agencia) {
         super('div', elementoPai);
         this.elemento.classList.add('col');
         this.elemento.classList.add('col-12');
@@ -24,16 +24,12 @@ export class Coluna extends Componente {
         this.botaoExcluir = new Componente('button', this.cardHeader.elemento);
         this.botaoExcluir.elemento.classList.add('btn-close');
         this.botaoExcluir.elemento.addEventListener('click', () => {
-            this.excluirColuna(this.conteudo);
+            this.agencia.excluirColuna(this);
         });
         this.cardBody = new Componente('div', this.card.elemento);
         this.cardBody.elemento.classList.add('card-body');
         this.cardBody.elemento.innerHTML = `<p class="card-text">${conteudo}</p>`;
         this.conteudo = structuredClone(conteudo);
-    }
-    excluirColuna(conteudo) {
-        const service = new Service();
-        service.excluirLembrete(conteudo);
-        location.reload();
+        this.agencia = agencia;
     }
 }
