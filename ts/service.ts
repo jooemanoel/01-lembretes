@@ -14,4 +14,11 @@ export class Service {
     this.lembretes.splice(this.lembretes.indexOf(lembrete), 1);
     this.salvarLembretes();
   }
+  editarLembrete(conteudo: string, index: number) {
+    this.lembretes[index] = structuredClone(conteudo);
+    console.log(this.lembretes[index]);
+    console.log(this.lembretes);
+
+    this.salvarLembretes();
+  }
 }

@@ -1,6 +1,8 @@
 import { Coluna } from "./Coluna.js";
 import { Service } from "./service.js";
 export class Agencia {
+    formulario;
+    indexColunaEmEdicao = -1;
     listaColunas = [];
     service;
     lembretes = [];
@@ -13,8 +15,19 @@ export class Agencia {
         this.listaColunas.push(new Coluna(document.querySelector('#principal'), lembrete, this));
     }
     novoLembrete(lembrete) {
-        this.criarColuna(lembrete);
-        this.service.novoLembrete(lembrete);
+        if (this.indexColunaEmEdicao === -1) {
+            this.criarColuna(lembrete);
+            this.service.novoLembrete(lembrete);
+        }
+        else {
+            this.editarColuna(lembrete);
+            this.service.editarLembrete(lembrete, this.indexColunaEmEdicao);
+            this.indexColunaEmEdicao = -1;
+        }
+    }
+    editarColuna(lembrete) {
+        this.listaColunas[this.indexColunaEmEdicao].conteudo = lembrete;
+        this.listaColunas[this.indexColunaEmEdicao].texto.elemento.textContent = lembrete;
     }
     excluirColuna(coluna) {
         this.service.excluirLembrete(coluna.conteudo);

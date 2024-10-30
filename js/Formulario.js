@@ -1,10 +1,11 @@
 import { Componente } from "./Componente.js";
 export class Formulario extends Componente {
+    agencia;
     form;
     labelLembrete;
     inputLembrete;
     confirmar;
-    constructor() {
+    constructor(agencia) {
         super('div', document.querySelector('#principal'));
         this.elemento.classList.add('col');
         this.elemento.classList.add('col-12');
@@ -22,5 +23,14 @@ export class Formulario extends Componente {
         this.confirmar.elemento.classList.add('btn-primary');
         this.confirmar.elemento.type = 'submit';
         this.confirmar.elemento.textContent = 'Confirmar';
+        this.agencia = agencia;
+        // Atribui o evento de criar um novo lembrete
+        this.form.elemento.onsubmit = event => {
+            event.preventDefault();
+            agencia.novoLembrete(this.inputLembrete.elemento.value);
+            this.form.elemento.reset();
+            this.agencia.mostrar();
+            this.ocultar();
+        };
     }
 }

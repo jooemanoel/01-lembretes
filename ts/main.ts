@@ -3,16 +3,10 @@ import { Formulario } from "./Formulario.js";
 
 // cria a Agência e o Formulário
 const agencia = new Agencia();
-const formulario = new Formulario();
+const formulario = new Formulario(agencia);
+agencia.formulario = formulario;
 // botao do menu hamburguer para ajuste
 const botaoHamburguer = document.querySelector('#botao-hamburguer') as HTMLButtonElement;
-// Atribui o evento de criar um novo lembrete
-formulario.form.elemento.onsubmit = event => {
-    event.preventDefault();
-    agencia.novoLembrete((formulario.inputLembrete.elemento as HTMLInputElement).value);
-    (formulario.form.elemento as HTMLFormElement).reset();
-    mostrarAgencia();
-}
 // função e evento para mostrar a agência
 const mostrarAgencia = () => {
     agencia.mostrar();
