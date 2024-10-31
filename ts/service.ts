@@ -15,7 +15,7 @@ export class Service {
     this.salvarLembretes();
   }
   editarLembrete(conteudo: string, index: number) {
-    this.lembretes[index] = structuredClone(conteudo);
+    this.lembretes[index] = conteudo;
     console.log(this.lembretes[index]);
     console.log(this.lembretes);
 

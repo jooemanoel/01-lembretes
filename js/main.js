@@ -14,13 +14,11 @@ const mostrarAgencia = () => {
 const botaoInicio = document.querySelector('#botao-inicio');
 botaoInicio.onclick = () => {
     mostrarAgencia();
-    botaoHamburguer.click();
 };
 // função e evento para mostrar o formulário
 const mostrarNovo = () => {
     agencia.ocultar();
     formulario.mostrar();
-    botaoHamburguer.click();
 };
 const botaoNovo = document.querySelector('#botao-novo');
 botaoNovo.onclick = () => {
