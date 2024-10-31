@@ -1,20 +1,20 @@
-import { Coluna } from "./Coluna.js";
-import { Formulario } from "./Formulario.js";
+import { Coluna } from "./coluna.js";
+import { Component } from "./component.js";
+import { Formulario } from "./formulario.js";
+import { Main } from "./main.js";
 import { Service } from "./service.js";
 
 export class Agencia {
-    formulario: Formulario;
     indexColunaEmEdicao = -1;
-    listaColunas: Coluna[] = [];
-    service: Service;
+    colunas: Coluna[] = [];
+    service = Service.getInstance();
     lembretes: string[] = [];
-    constructor() {
-        this.service = new Service();
+    constructor(private mainComponent: Main) {
         this.service.lembretes.forEach(lembrete => this.criarColuna(lembrete));
         this.lembretes = this.service.lembretes;
     }
     criarColuna(lembrete: string) {
-        this.listaColunas.push(new Coluna(document.querySelector<HTMLElement>('#principal'), lembrete, this));
+        this.colunas.push(new Coluna(this.mainComponent, lembrete, this));
     }
     novoLembrete(lembrete: string) {
         if (this.indexColunaEmEdicao === -1) {
@@ -28,21 +28,26 @@ export class Agencia {
         }
     }
     editarColuna(lembrete: string) {
-        this.listaColunas[this.indexColunaEmEdicao].conteudo = lembrete;
-        this.listaColunas[this.indexColunaEmEdicao].texto.elemento.textContent = lembrete;
+        this.colunas[this.indexColunaEmEdicao].conteudo = lembrete;
+        this.colunas[this.indexColunaEmEdicao].texto.element.textContent = lembrete;
     }
     excluirColuna(coluna: Coluna) {
         this.service.excluirLembrete(coluna.conteudo);
-        coluna.elementoPai.removeChild(coluna.elemento);
-        this.listaColunas.splice(this.listaColunas.indexOf(coluna), 1);
+        this.mainComponent.element.removeChild(coluna.element);
+        this.colunas.splice(this.colunas.indexOf(coluna), 1);
+    }
+    excluirTudo() {
+        this.colunas.forEach(coluna => {
+            coluna.element.remove();
+        });
     }
     mostrar() {
-        for (const coluna of this.listaColunas) {
+        for (const coluna of this.colunas) {
             coluna.mostrar();
         }
     }
     ocultar() {
-        for (const coluna of this.listaColunas) {
+        for (const coluna of this.colunas) {
             coluna.ocultar();
         }
     }

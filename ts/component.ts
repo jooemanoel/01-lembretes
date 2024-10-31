@@ -1,15 +1,14 @@
 export class Component {
-    element;
-    fatherElement;
-    constructor(tag, fatherElement) {
-        if (fatherElement) {
+    element: HTMLElement;
+    fatherComponent: Component;
+    constructor(tag: string, fatherComponent?: Component) {
+        if (fatherComponent) {
             this.element = document.createElement(tag);
-            this.fatherElement = fatherElement;
-            this.fatherElement.appendChild(this.element);
+            this.fatherComponent = fatherComponent;
+            this.fatherComponent.element.appendChild(this.element);
         }
         else {
             this.element = document.querySelector(tag);
-            console.log(this.element);
         }
     }
     mostrar() {

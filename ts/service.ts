@@ -1,7 +1,14 @@
 export class Service {
+  private static instance: Service;
   lembretes: string[] = [];
   constructor() {
     this.lembretes = JSON.parse(localStorage.getItem('lembretes') ?? '[]');
+  }
+  public static getInstance(): Service {
+    if (!this.instance) {
+      this.instance = new Service();
+    }
+    return this.instance;
   }
   salvarLembretes() {
     localStorage.setItem('lembretes', JSON.stringify(this.lembretes));
@@ -16,9 +23,10 @@ export class Service {
   }
   editarLembrete(conteudo: string, index: number) {
     this.lembretes[index] = conteudo;
-    console.log(this.lembretes[index]);
-    console.log(this.lembretes);
-
+    this.salvarLembretes();
+  }
+  excluirTudo() {
+    this.lembretes = [];
     this.salvarLembretes();
   }
 }

@@ -1,45 +1,62 @@
-import { Agencia } from "./Agencia.js";
-import { Formulario } from "./Formulario.js";
-// cria a Agência e o Formulário
-const agencia = new Agencia();
-const formulario = new Formulario(agencia);
-agencia.formulario = formulario;
-// botao do menu hamburguer para ajuste
-const botaoHamburguer = document.querySelector('#botao-hamburguer');
-// função e evento para mostrar a agência
-const mostrarAgencia = () => {
-    agencia.mostrar();
-    formulario.ocultar();
-};
-const botaoInicio = document.querySelector('#botao-inicio');
-botaoInicio.onclick = () => {
-    mostrarAgencia();
-};
-// função e evento para mostrar o formulário
-const mostrarNovo = () => {
-    agencia.ocultar();
-    formulario.mostrar();
-};
-const botaoNovo = document.querySelector('#botao-novo');
-botaoNovo.onclick = () => {
-    mostrarNovo();
-    botaoHamburguer.click();
-};
-// função e evento para limpar o localStorage
-const abrirModalLimpar = () => {
-    const botaoAbrirModal = document.querySelector('#botao-abrir-modal');
-    botaoAbrirModal.click();
-};
-const botaoLimpar = document.querySelector('#botao-limpar');
-botaoLimpar.onclick = abrirModalLimpar;
-// Botão de confirmar dentro do modal
-const limpar = () => {
-    localStorage.clear();
-    location.reload();
-};
-const botaoLimparMesmo = document.querySelector('#botao-limpar-mesmo');
-botaoLimparMesmo.onclick = limpar;
-// mostra a agência ao carregar a página
-window.onload = () => {
-    mostrarAgencia();
-};
+import { Agencia } from "./agencia.js";
+import { Component } from "./component.js";
+import { Formulario } from "./formulario.js";
+import { Service } from "./service.js";
+export class Main extends Component {
+    service = Service.getInstance();
+    // agencia e formulário - páginas
+    agencia;
+    formulario;
+    // botão do menu hamburguer para ajuste
+    botaoHamburguer = document.querySelector('#botao-hamburguer');
+    // botões do cabeçalho
+    botaoInicio = document.querySelector('#botao-inicio');
+    // botaoNovo = document.querySelector('#botao-novo') as HTMLElement;
+    botaoNovo = new Component('#botao-novo');
+    botaoLimpar = document.querySelector('#botao-limpar');
+    // botão de utilidade para abrir o modal de limpeza
+    botaoAbrirModal = document.querySelector('#botao-abrir-modal');
+    // botão dentro do modal pra confirmar limpeza
+    botaoLimparMesmo = document.querySelector('#botao-limpar-mesmo');
+    constructor() {
+        super('#principal');
+        this.agencia = new Agencia(this);
+        this.formulario = new Formulario(this);
+        this.botaoInicio.onclick = () => {
+            this.mostrarAgencia();
+        };
+        this.botaoNovo.element.onclick = () => {
+            this.mostrarNovo();
+            this.botaoHamburguer.click();
+        };
+        this.botaoLimpar.onclick = () => {
+            this.abrirModalLimpar();
+        };
+        this.botaoLimparMesmo.onclick = () => {
+            this.limpar();
+        };
+        this.mostrarAgencia();
+    }
+    // função e evento para mostrar a agência
+    mostrarAgencia() {
+        this.agencia.mostrar();
+        this.formulario.ocultar();
+    }
+    // função e evento para mostrar o formulário
+    mostrarNovo() {
+        this.agencia.ocultar();
+        this.formulario.mostrar();
+    }
+    // função e evento para limpar o localStorage
+    abrirModalLimpar() {
+        this.botaoAbrirModal.click();
+    }
+    // Botão de confirmar dentro do modal
+    limpar() {
+        this.agencia.excluirTudo();
+        this.service.excluirTudo();
+        this.botaoHamburguer.click();
+        this.botaoAbrirModal.click();
+    }
+}
+const main = new Main();
