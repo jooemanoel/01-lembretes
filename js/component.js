@@ -11,10 +11,7 @@ export class Component {
             this.element = document.querySelector(tag);
         }
     }
-    mostrar() {
-        this.element.classList.remove('d-none');
-    }
-    ocultar() {
-        this.element.classList.add('d-none');
+    destroy() {
+        this.element.remove();
     }
 }

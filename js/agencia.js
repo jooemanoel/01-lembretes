@@ -2,7 +2,6 @@ import { Coluna } from "./coluna.js";
 import { Service } from "./service.js";
 export class Agencia {
     mainComponent;
-    indexColunaEmEdicao = -1;
     colunas = [];
     service = Service.getInstance();
     lembretes = [];
@@ -12,22 +11,7 @@ export class Agencia {
         this.lembretes = this.service.lembretes;
     }
     criarColuna(lembrete) {
-        this.colunas.push(new Coluna(this.mainComponent, lembrete, this));
-    }
-    novoLembrete(lembrete) {
-        if (this.indexColunaEmEdicao === -1) {
-            this.criarColuna(lembrete);
-            this.service.novoLembrete(lembrete);
-        }
-        else {
-            this.editarColuna(lembrete);
-            this.service.editarLembrete(lembrete, this.indexColunaEmEdicao);
-            this.indexColunaEmEdicao = -1;
-        }
-    }
-    editarColuna(lembrete) {
-        this.colunas[this.indexColunaEmEdicao].conteudo = lembrete;
-        this.colunas[this.indexColunaEmEdicao].texto.element.textContent = lembrete;
+        this.colunas.push(new Coluna(this.mainComponent, lembrete));
     }
     excluirColuna(coluna) {
         this.service.excluirLembrete(coluna.conteudo);
@@ -39,14 +23,7 @@ export class Agencia {
             coluna.element.remove();
         });
     }
-    mostrar() {
-        for (const coluna of this.colunas) {
-            coluna.mostrar();
-        }
-    }
-    ocultar() {
-        for (const coluna of this.colunas) {
-            coluna.ocultar();
-        }
+    destroy() {
+        this.colunas.forEach(coluna => coluna.destroy());
     }
 }

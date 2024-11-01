@@ -1,6 +1,7 @@
 export class Service {
   private static instance: Service;
   lembretes: string[] = [];
+  indexLembreteEmEdicao = -1;
   constructor() {
     this.lembretes = JSON.parse(localStorage.getItem('lembretes') ?? '[]');
   }
@@ -13,9 +14,18 @@ export class Service {
   salvarLembretes() {
     localStorage.setItem('lembretes', JSON.stringify(this.lembretes));
   }
+  ativarEdicao(index: number) {
+    this.indexLembreteEmEdicao = index;
+  }
   novoLembrete(lembrete: string) {
-    this.lembretes.push(lembrete);
-    this.salvarLembretes();
+    if (this.indexLembreteEmEdicao === -1) {
+      this.lembretes.push(lembrete);
+      this.salvarLembretes();
+    }
+    else {
+      this.editarLembrete(lembrete, this.indexLembreteEmEdicao);
+      this.indexLembreteEmEdicao = -1;
+    }
   }
   excluirLembrete(lembrete: string) {
     this.lembretes.splice(this.lembretes.indexOf(lembrete), 1);

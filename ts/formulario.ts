@@ -1,14 +1,16 @@
 import { Agencia } from "./agencia.js";
 import { Component } from "./component.js";
 import { Main } from "./main.js";
+import { Service } from "./service.js";
 
 export class Formulario extends Component {
+    service = Service.getInstance();
     form: Component;
     labelLembrete: Component;
     inputLembrete: Component;
     confirmar: Component;
 
-    constructor(private alfatherComponent: Main) {
+    constructor(private alfatherComponent: Main, conteudo?: string) {
         super('div', alfatherComponent);
         this.element.classList.add('col');
         this.element.classList.add('col-12');
@@ -23,6 +25,7 @@ export class Formulario extends Component {
         this.inputLembrete = new Component('input', this.form);
         this.inputLembrete.element.classList.add('form-control');
         this.inputLembrete.element.classList.add('mb-3');
+        if (conteudo) (this.inputLembrete.element as HTMLInputElement).value = conteudo;
 
         this.confirmar = new Component('button', this.form);
         this.confirmar.element.classList.add('btn');
@@ -33,10 +36,8 @@ export class Formulario extends Component {
         // Atribui o evento de criar um novo lembrete
         this.form.element.onsubmit = event => {
             event.preventDefault();
-            this.alfatherComponent.agencia.novoLembrete((this.inputLembrete.element as HTMLInputElement).value);
-            (this.form.element as HTMLFormElement).reset();
-            this.alfatherComponent.agencia.mostrar();
-            this.ocultar();
+            this.service.novoLembrete((this.inputLembrete.element as HTMLInputElement).value);
+            this.alfatherComponent.mostrarAgencia();
         }
     }
 }

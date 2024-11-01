@@ -1,16 +1,18 @@
 import { Component } from "./component.js";
+import { Service } from "./service.js";
 export class Coluna extends Component {
     mainComponent;
-    agencia;
     conteudo;
+    service = Service.getInstance();
     card;
     cardBody;
     texto;
     botaoEditar;
     botaoExcluir;
-    constructor(mainComponent, conteudo, agencia) {
+    constructor(mainComponent, conteudo) {
         super('div', mainComponent);
         this.mainComponent = mainComponent;
+        this.conteudo = conteudo;
         this.element.classList.add('col');
         this.element.classList.add('col-12');
         this.element.classList.add('col-md-4');
@@ -29,14 +31,11 @@ export class Coluna extends Component {
         this.botaoEditar.element.innerHTML = `<i class="fas fa-pencil-alt" style="color: white; font-size: 20px;"></i>`;
         this.botaoExcluir = new Component('div', this.cardBody);
         this.botaoExcluir.element.innerHTML = `<i class="fas fa-trash" style="color: white; font-size: 20px;"></i>`;
-        this.botaoExcluir.element.addEventListener('click', () => this.agencia.excluirColuna(this));
+        this.botaoExcluir.element.addEventListener('click', () => this.mainComponent.agencia.excluirColuna(this));
         this.conteudo = structuredClone(conteudo);
-        this.agencia = agencia;
         this.botaoEditar.element.addEventListener('click', () => {
-            this.agencia.indexColunaEmEdicao = this.agencia.colunas.indexOf(this);
-            this.mainComponent.formulario.inputLembrete.element.value = this.conteudo;
-            this.mainComponent.formulario.mostrar();
-            this.agencia.ocultar();
+            this.service.indexLembreteEmEdicao = this.service.lembretes.indexOf(this.conteudo);
+            this.mainComponent.mostrarNovo(this.conteudo);
         });
     }
 }
