@@ -1,7 +1,9 @@
+import { Lembrete } from "./interfaces/lembrete";
+
 export class Service {
   private static instance: Service;
-  lembretes: string[] = [];
-  indexLembreteEmEdicao = -1;
+  lembretes: Lembrete[] = [];
+  indexLembreteEmEdicao = 0;
   constructor() {
     this.lembretes = JSON.parse(localStorage.getItem('lembretes') ?? '[]');
   }
@@ -14,29 +16,35 @@ export class Service {
   salvarLembretes() {
     localStorage.setItem('lembretes', JSON.stringify(this.lembretes));
   }
-  ativarEdicao(index: number) {
-    this.indexLembreteEmEdicao = index;
-  }
-  novoLembrete(lembrete: string) {
-    if (this.indexLembreteEmEdicao === -1) {
-      this.lembretes.push(lembrete);
+  novoLembrete(value: string) {
+    if (!this.indexLembreteEmEdicao) {
+      this.lembretes.push({ id: this.gerarId(), conteudo: value });
       this.salvarLembretes();
     }
     else {
-      this.editarLembrete(lembrete, this.indexLembreteEmEdicao);
-      this.indexLembreteEmEdicao = -1;
+      this.editarLembrete(value);
+      this.indexLembreteEmEdicao = 0;
     }
   }
-  excluirLembrete(lembrete: string) {
-    this.lembretes.splice(this.lembretes.indexOf(lembrete), 1);
+  excluirLembrete(id: number) {
+    this.lembretes = this.lembretes.filter(x => x.id !== id);
     this.salvarLembretes();
   }
-  editarLembrete(conteudo: string, index: number) {
-    this.lembretes[index] = conteudo;
+  editarLembrete(value: string) {
+    const lembrete = this.lembretes.find(x => x.id === this.indexLembreteEmEdicao);
+    if (lembrete) lembrete.conteudo = value;
     this.salvarLembretes();
   }
-  excluirTudo() {
-    this.lembretes = [];
+  gerarId() {
+    let max = 0;
+    this.lembretes.forEach(lembrete => {
+      if (lembrete.id > max) max = lembrete.id;
+    });
+    return max + 1;
+  }
+  ordenar(crescente: boolean) {
+    if (crescente) this.lembretes.sort((a, b) => a.conteudo.localeCompare(b.conteudo))
+    else this.lembretes.sort((a, b) => b.conteudo.localeCompare(a.conteudo));
     this.salvarLembretes();
   }
 }

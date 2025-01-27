@@ -1,13 +1,12 @@
-import { Main } from "./main.js";
 import { Service } from "./service.js";
-
 export class Formulario {
-    formulario: HTMLFormElement;
-    inputNovo: HTMLInputElement;
-    botaoNovo: HTMLButtonElement;
+    main;
+    formulario;
+    inputNovo;
+    botaoNovo;
     service = Service.getInstance();
-
-    constructor(private main: Main) {
+    constructor(main) {
+        this.main = main;
         this.formulario = document.querySelector('form');
         this.inputNovo = this.formulario.querySelector('input');
         this.botaoNovo = this.formulario.querySelector('button');

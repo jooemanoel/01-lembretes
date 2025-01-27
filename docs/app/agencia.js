@@ -1,11 +1,11 @@
-import { Main } from "./main.js";
 import { Service } from "./service.js";
-
 export class Agencia {
-    tabela: HTMLTableElement;
-    corpo: HTMLElement;
+    main;
+    tabela;
+    corpo;
     service = Service.getInstance();
-    constructor(private main: Main) {
+    constructor(main) {
+        this.main = main;
         this.tabela = document.querySelector('table');
         this.corpo = this.tabela.querySelector('.table-group-divider');
         const botaoOrdenarCrescente = this.tabela.querySelector('#az');
@@ -45,13 +45,13 @@ export class Agencia {
             </tr>`;
         });
         this.service.lembretes.forEach(lembrete => {
-            const botaoEditar: HTMLButtonElement = this.corpo.querySelector(`#editar-${lembrete.id}`);
+            const botaoEditar = this.corpo.querySelector(`#editar-${lembrete.id}`);
             botaoEditar.addEventListener('click', () => {
                 this.main.formulario.inputNovo.value = lembrete.conteudo;
                 this.main.formulario.botaoNovo.innerText = 'Editar';
                 this.service.indexLembreteEmEdicao = lembrete.id;
             });
-            const botaoExcluir: HTMLButtonElement = this.corpo.querySelector(`#excluir-${lembrete.id}`);
+            const botaoExcluir = this.corpo.querySelector(`#excluir-${lembrete.id}`);
             botaoExcluir.addEventListener('click', () => {
                 this.service.excluirLembrete(lembrete.id);
                 this.main.agencia.renderizar();
