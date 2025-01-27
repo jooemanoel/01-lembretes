@@ -13,6 +13,7 @@ export class Formulario {
         this.botaoNovo = this.formulario.querySelector('button');
         this.formulario.onsubmit = (event) => {
             event.preventDefault();
+            if (!this.inputNovo.value) return;
             this.service.novoLembrete(this.inputNovo.value);
             this.main.agencia.renderizar();
             this.inputNovo.value = '';

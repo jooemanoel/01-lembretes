@@ -4,10 +4,12 @@ import { Service } from "./service.js";
 export class Agencia {
     tabela: HTMLTableElement;
     corpo: HTMLElement;
+    textoListaVazia: HTMLElement;
     service = Service.getInstance();
     constructor(private main: Main) {
         this.tabela = document.querySelector('table');
         this.corpo = this.tabela.querySelector('.table-group-divider');
+        this.textoListaVazia = document.querySelector('#lista-vazia');
         const botaoOrdenarCrescente = this.tabela.querySelector('#az');
         console.log(botaoOrdenarCrescente);
         botaoOrdenarCrescente.addEventListener('click', () => {
@@ -24,6 +26,14 @@ export class Agencia {
     }
     renderizar() {
         this.corpo.innerHTML = '';
+        if (!this.service.lembretes.length) {
+            this.tabela.style.display = 'none';
+            this.textoListaVazia.style.display = 'block';
+        }
+        else {
+            this.tabela.style.display = 'table';
+            this.textoListaVazia.style.display = 'none';
+        }
         this.service.lembretes.forEach(lembrete => {
             this.corpo.innerHTML += `
             <tr>

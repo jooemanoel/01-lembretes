@@ -31,15 +31,17 @@
               placeholder="Adicionar um lembrete"
               aria-label="Adicionar um lembrete"
             />
-            <button class="btn btn-outline-success" type="submit">Novo</button>
+            <button class="btn btn-primary" type="submit">Novo</button>
           </form>
         </div>
       </nav>
     </header>
     <!-- div principal onde os elementos são incluídos -->
     <main class="container">
-      <div class="row" id="principal"></div>
-      <table class="table">
+      <p class="w-100 text-center p-3" id="lista-vazia" style="display: none">
+        Não há itens na lista
+      </p>
+      <table class="table" style="display: none">
         <thead>
           <tr>
             <th class="col-6">
