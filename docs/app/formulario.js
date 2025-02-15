@@ -7,17 +7,17 @@ export class Formulario {
     service = Service.getInstance();
     constructor(main) {
         this.main = main;
-        this.formulario = document.querySelector('form');
-        this.inputNovo = this.formulario.querySelector('input');
-        this.botaoNovo = this.formulario.querySelector('button');
+        this.formulario = document.querySelector("form");
+        this.inputNovo = this.formulario.querySelector("input");
+        this.botaoNovo = this.formulario.querySelector("button");
         this.formulario.onsubmit = (event) => {
             event.preventDefault();
             if (!this.inputNovo.value)
                 return;
-            this.service.novoLembrete(this.inputNovo.value);
+            this.service.novoLembrete(this.inputNovo.value.toUpperCase());
             this.main.agencia.renderizar();
-            this.inputNovo.value = '';
-            this.botaoNovo.innerText = 'Novo';
+            this.inputNovo.value = "";
+            this.botaoNovo.innerText = "Novo";
         };
     }
 }
