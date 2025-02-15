@@ -28,7 +28,7 @@ export class Agencia {
     }
     renderizar() {
         this.corpo.innerHTML = "";
-        if (!this.service.itens.length) {
+        if (!this.service.lista.itens.length) {
             this.tabela.style.display = "none";
             this.textoListaVazia.style.display = "block";
         }
@@ -36,7 +36,7 @@ export class Agencia {
             this.tabela.style.display = "table";
             this.textoListaVazia.style.display = "none";
         }
-        this.service.itens.forEach((lembrete) => {
+        this.service.lista.itens.forEach((lembrete) => {
             this.corpo.innerHTML += `
             <tr>
                 <td colspan="2">
@@ -56,7 +56,7 @@ export class Agencia {
                 </td>
             </tr>`;
         });
-        this.service.itens.forEach((lembrete) => {
+        this.service.lista.itens.forEach((lembrete) => {
             const botaoEditar = this.corpo.querySelector(`#editar-${lembrete.id}`);
             botaoEditar.addEventListener("click", () => {
                 this.main.formulario.inputNovo.value = lembrete.nome;
