@@ -1,11 +1,25 @@
-import { Lembrete } from "./interfaces/lembrete";
+import { Item } from "./interfaces/item";
 
 export class Service {
   private static instance: Service;
-  lembretes: Lembrete[] = [];
+  itens: Item[] = [];
   indexLembreteEmEdicao = 0;
   constructor() {
-    this.lembretes = JSON.parse(localStorage.getItem('lembretes') ?? '[]');
+    // this.lembretes = JSON.parse(localStorage.getItem("lembretes") ?? "[]");
+    // this.carregar();
+  }
+  async carregar() {
+    await fetch("https://json-server-seven-alpha.vercel.app/read")
+      .then((res) => res.json())
+      .then((res) => res.data)
+      .then((data) => {
+        if (!data) return;
+        data.forEach((x: string[]) => {
+          const item: Item = { id: parseInt(x[0]), nome: x[1] };
+          this.itens = [...this.itens, item];
+        });
+      });
+    console.log(this.itens);
   }
   public static getInstance(): Service {
     if (!this.instance) {
@@ -13,38 +27,59 @@ export class Service {
     }
     return this.instance;
   }
+  async salvar() {
+    // Transformando os itens no formato correto para o Google Sheets
+    const valores = this.itens.map((item) => [item.id.toString(), item.nome]);
+
+    const requisicao = {
+      values: valores,
+    };
+
+    await fetch("https://json-server-seven-alpha.vercel.app/write", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requisicao),
+    })
+      .then((res) => res.json())
+      .then((res) => console.log("Dados salvos:", res))
+      .catch((error) => console.error("Erro ao salvar:", error));
+  }
   salvarLembretes() {
-    localStorage.setItem('lembretes', JSON.stringify(this.lembretes));
+    this.salvar();
+    localStorage.setItem("lembretes", JSON.stringify(this.itens));
   }
   novoLembrete(value: string) {
     if (!this.indexLembreteEmEdicao) {
-      this.lembretes.push({ id: this.gerarId(), conteudo: value });
+      this.itens.push({ id: this.gerarId(), nome: value });
       this.salvarLembretes();
-    }
-    else {
+    } else {
       this.editarLembrete(value);
       this.indexLembreteEmEdicao = 0;
     }
   }
   excluirLembrete(id: number) {
-    this.lembretes = this.lembretes.filter(x => x.id !== id);
+    this.itens = this.itens.filter((x) => x.id !== id);
     this.salvarLembretes();
   }
   editarLembrete(value: string) {
-    const lembrete = this.lembretes.find(x => x.id === this.indexLembreteEmEdicao);
-    if (lembrete) lembrete.conteudo = value;
+    const lembrete = this.itens.find(
+      (x) => x.id === this.indexLembreteEmEdicao
+    );
+    if (lembrete) lembrete.nome = value;
     this.salvarLembretes();
   }
   gerarId() {
     let max = 0;
-    this.lembretes.forEach(lembrete => {
+    this.itens.forEach((lembrete) => {
       if (lembrete.id > max) max = lembrete.id;
     });
     return max + 1;
   }
   ordenar(crescente: boolean) {
-    if (crescente) this.lembretes.sort((a, b) => a.conteudo.localeCompare(b.conteudo))
-    else this.lembretes.sort((a, b) => b.conteudo.localeCompare(a.conteudo));
+    if (crescente) this.itens.sort((a, b) => a.nome.localeCompare(b.nome));
+    else this.itens.sort((a, b) => b.nome.localeCompare(a.nome));
     this.salvarLembretes();
   }
 }
